@@ -30,7 +30,7 @@ getinfo()
 
 writeinterfacefile()
 { 
-cat << EOF > $1 
+cat << EOF >> $1 
 # This file describes the network interfaces available on your system
 # and how to activate them. For more information, see interfaces(5).
 # The loopback network interface
