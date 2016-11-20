@@ -21,6 +21,7 @@
 
 getinfo()
 {
+  read -p "Enter the interface name of your network adapter:          (looks like eth01)   " iface
   read -p "Enter the IP of your router:          (looks like 192.168.1.1)   " routerip
   read -p "Enter the netmask for your network:   (looks like 255.255.255.0) " netmask
   read -p "Enter the ip address for your server: (looks like 192.168.1.22)  " staticip
@@ -49,7 +50,7 @@ EOF
 #don't use any space before of after 'EOF' in the previous line
 
   echo ""
-  echo "Your informatons was saved in '$1' file."
+  echo "The informaton was saved in '$1' file."
   echo ""
   exit 0
 }
@@ -69,17 +70,18 @@ echo ""
 getinfo
 echo ""
 echo "So your settings are:"
+echo "Inet adapter name is: $iface"
 echo "Address of your Router is:   $routerip"
 echo "The Mask for the Network is: $netmask"
 echo "Your decided Server IP is:   $staticip"
 echo ""
 
 while true; do
-  read -p "Are these informations correct? [y/n]: " yn 
+  read -p "Is these information correct? [y/n]: " yn 
   case $yn in
     [Yy]* ) writeinterfacefile $file;;
     [Nn]* ) getinfo;;
-        * ) echo "Pleas enter y or n!";;
+        * ) echo "Please enter y or n!";;
   esac
 done
 
