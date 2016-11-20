@@ -54,7 +54,7 @@ EOF
   exit 0
 }
 
-file="/home/bitnami/test"
+file="/home/bitnami/test/interfaces"
 if [ ! -f $file ]; then
   echo ""
   echo "The file '$file' doesn't exist!"
@@ -82,3 +82,4 @@ while true; do
         * ) echo "Pleas enter y or n!";;
   esac
 done
+
