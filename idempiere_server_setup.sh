@@ -99,4 +99,4 @@ while true; do
   esac
 done
 
-sudo ifdown $iface && sudo ifup $iface
+ifdown $iface && ifup $iface
