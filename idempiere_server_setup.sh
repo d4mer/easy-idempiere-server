@@ -98,3 +98,5 @@ while true; do
         * ) echo "Please enter y or n!";;
   esac
 done
+
+sudo ifdown eth0 && sudo ifup eth0
