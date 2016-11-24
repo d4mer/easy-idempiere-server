@@ -19,6 +19,8 @@
 #           San Francisco, California 94105, USA
 #
 
+
+# Get the various info to write the interfaces file
 getinfo()
 {
   read -p "Enter the interface name of your network adapter:          (looks like eth01)   " iface
@@ -29,6 +31,7 @@ getinfo()
   
 }
 
+# Write the interfaces file
 writeinterfacefile()
 { 
 cat << EOF >> $1 
@@ -41,8 +44,8 @@ iface lo inet loopback
 auto eth0
 iface eth0 inet dhcp
 
-#Your static network configuration  
-iface eth0 inet static
+# Your static network configuration  
+iface $iface inet static
 address $staticip
 netmask $netmask
 gateway $routerip 
@@ -55,7 +58,7 @@ EOF
   exit 0
 }
 
-file="/home/bitnami/test/interfaces"
+file="/Users/imac/test/interfaces"
 if [ ! -f $file ]; then
   echo ""
   echo "The file '$file' doesn't exist!"
@@ -63,8 +66,19 @@ if [ ! -f $file ]; then
   exit 1
 fi
 
+#Let's get the available ethernet adapters on this system
+getifaceinfo()
+{
+
+	ifconfig | cut -c 1-8 | sort | uniq -u | grep -v lo | awk -F':' '{ print $1}'
+	
+}
+
 clear
 echo "Let's set up a static ip address for your site"
+echo ""
+echo "Here are the available ethernet adapters on your system. You'll need to choose one in the next step."
+echo "$(getifaceinfo)"
 echo ""
 
 getinfo
@@ -77,11 +91,10 @@ echo "Your decided Server IP is:   $staticip"
 echo ""
 
 while true; do
-  read -p "Is these information correct? [y/n]: " yn 
+  read -p "Is this information correct? [y/n]: " yn 
   case $yn in
     [Yy]* ) writeinterfacefile $file;;
     [Nn]* ) getinfo;;
         * ) echo "Please enter y or n!";;
   esac
 done
-
