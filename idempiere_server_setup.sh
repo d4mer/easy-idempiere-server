@@ -55,7 +55,7 @@ EOF
   echo ""
   echo "The informaton was saved in '$1' file."
   echo ""
-  exit 0
+break
 }
 
 file="/Users/imac/test/interfaces"
@@ -78,6 +78,7 @@ clear
 echo "Let's set up a static ip address for your site"
 echo ""
 echo "Here are the available ethernet adapters on your system. You'll need to choose one in the next step."
+echo ""
 echo "$(getifaceinfo)"
 echo ""
 
@@ -100,3 +101,5 @@ while true; do
 done
 
 ifdown $iface && ifup $iface
+
+sudo apt-get install openssh-client openssh-server
