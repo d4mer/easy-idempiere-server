@@ -31,6 +31,22 @@ getinfo()
   
 }
 
+# Determine if this a VBox machine
+getvminfo()
+{
+	read -p "Is this a Virtual Machine? " -n vmdata
+}		
+
+#Install VBox addons
+vboxaddons()
+{
+		sudo mount /dev/cdrom /media/cdrom
+	
+	sudo apt-get install -y dkms build-essential linux-headers-generic linux-headers-$(uname -r)
+	
+sudo /media/cdrom/VBoxLinuxAdditions.run
+}
+
 # Write the interfaces file
 writeinterfacefile()
 { 
@@ -100,7 +116,9 @@ while true; do
   esac
 done
 
+#Lets restart the interfaces
 ifdown $iface && ifup $iface
 
+#Time to start updating the system and installing our software
 sudo apt-get update && sudo apt-get upgrade --force-yes
-sudo apt-get install openssh-client openssh-server landscape-common nmap p7zip-full tiger logwatch libdate-manip-perl fail2ban --force-yes
+sudo apt-get install openssh-client openssh-server landscape-common nmap p7zip-full tiger logwatch libdate-manip-perl fail2ban --force-yes postgresql postgresql-contrib
