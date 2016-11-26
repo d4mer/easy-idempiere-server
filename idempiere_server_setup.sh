@@ -97,6 +97,8 @@ echo "Here are the available ethernet adapters on your system. You'll need to ch
 echo ""
 echo "$(getifaceinfo)"
 echo ""
+echo "$(getvminfo)"
+echo ""
 
 getinfo
 echo ""
@@ -121,4 +123,11 @@ ifdown $iface && ifup $iface
 
 #Time to start updating the system and installing our software
 sudo apt-get update && sudo apt-get upgrade --force-yes
+	
+if [$getvminfo == y];
+	then
+		$vboxaddons
+	else
+		break
+fi
 sudo apt-get install openssh-client openssh-server landscape-common nmap p7zip-full tiger logwatch libdate-manip-perl fail2ban --force-yes postgresql postgresql-contrib
