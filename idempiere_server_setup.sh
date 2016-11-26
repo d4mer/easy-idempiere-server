@@ -102,4 +102,5 @@ done
 
 ifdown $iface && ifup $iface
 
-sudo apt-get install openssh-client openssh-server
+sudo apt-get update && sudo apt-get upgrade --force-yes
+sudo apt-get install openssh-client openssh-server landscape-common nmap p7zip-full tiger logwatch libdate-manip-perl fail2ban --force-yes
