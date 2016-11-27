@@ -42,7 +42,7 @@ vboxaddons()
 {
 		sudo mount /dev/cdrom /media/cdrom
 	
-	sudo apt-get install -y dkms build-essential linux-headers-generic linux-headers-$(uname -r)
+	sudo apt-get install -y dkms build-essential linux-headers-generic linux-headers-$(uname -r) --force-y
 	
 sudo /media/cdrom/VBoxLinuxAdditions.run
 	break
