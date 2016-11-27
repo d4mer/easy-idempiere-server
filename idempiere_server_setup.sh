@@ -32,10 +32,10 @@ getinfo()
 }
 
 # Determine if this a VBox machine
-getvminfo()
-{
-	read -p "Is this a Virtual Machine? " -n vmdata
-}		
+#getvminfo()
+#{
+#	read -p "Is this a Virtual Machine? " -n vmdata
+#}		
 
 #Install VBox addons
 vboxaddons()
@@ -45,6 +45,7 @@ vboxaddons()
 	sudo apt-get install -y dkms build-essential linux-headers-generic linux-headers-$(uname -r)
 	
 sudo /media/cdrom/VBoxLinuxAdditions.run
+	break
 }
 
 # Write the interfaces file
@@ -74,7 +75,7 @@ EOF
 break
 }
 
-file="/Users/imac/test/interfaces"
+file="/home/guest/test/interfaces"
 if [ ! -f $file ]; then
   echo ""
   echo "The file '$file' doesn't exist!"
@@ -124,10 +125,12 @@ ifdown $iface && ifup $iface
 #Time to start updating the system and installing our software
 sudo apt-get update && sudo apt-get upgrade --force-yes
 	
-if [$getvminfo == y];
-	then
-		$vboxaddons
-	else
-		break
-fi
+while true; do
+  read -p "Is this a virtual machine? [y/n]: " yn 
+  case $yn in
+    [Yy]* ) vboxaddons;;
+    [Nn]* ) break;;
+        * ) echo "Please enter y or n.";;
+  esac
+done
 sudo apt-get install openssh-client openssh-server landscape-common nmap p7zip-full tiger logwatch libdate-manip-perl fail2ban --force-yes postgresql postgresql-contrib
