@@ -19,8 +19,10 @@
 #           San Francisco, California 94105, USA
 #
 
-
+#######################################################################################
 # Get the various info to write the interfaces file
+#######################################################################################
+
 getinfo()
 {
   read -p "Enter the interface name of your network adapter:          (looks like eth01)   " iface
@@ -31,13 +33,19 @@ getinfo()
   
 }
 
+#######################################################################################
 # Determine if this a VBox machine
+#######################################################################################
+
 #getvminfo()
 #{
 #	read -p "Is this a Virtual Machine? " -n vmdata
 #}		
 
+#######################################################################################
 #Install VBox addons
+#######################################################################################
+
 vboxaddons()
 {
 		sudo mount /dev/cdrom /media/cdrom
@@ -48,7 +56,10 @@ sudo /media/cdrom/VBoxLinuxAdditions.run
 	break
 }
 
+#######################################################################################
 # Write the interfaces file
+#######################################################################################
+
 writeinterfacefile()
 { 
 cat << EOF >> $1 
@@ -75,6 +86,10 @@ EOF
 break
 }
 
+#######################################################################################
+#Determine if the interfaces file exists
+#######################################################################################
+
 file="/home/guest/test/interfaces"
 if [ ! -f $file ]; then
   echo ""
@@ -83,13 +98,20 @@ if [ ! -f $file ]; then
   exit 1
 fi
 
+#######################################################################################
 #Let's get the available ethernet adapters on this system
+#######################################################################################
+
 getifaceinfo()
 {
 
 	ifconfig | cut -c 1-8 | sort | uniq -u | grep -v lo | awk -F':' '{ print $1}'
 	
 }
+
+#######################################################################################
+#Clear the terminal and ask for the needed info
+#######################################################################################
 
 clear
 echo "Let's set up a static ip address for your site"
@@ -101,6 +123,9 @@ echo ""
 echo "$(getvminfo)"
 echo ""
 
+#######################################################################################
+#Make sure the settings are correct
+#######################################################################################
 getinfo
 echo ""
 echo "So your settings are:"
@@ -119,12 +144,22 @@ while true; do
   esac
 done
 
+#######################################################################################
 #Lets restart the interfaces
+#######################################################################################
+
 ifdown $iface && ifup $iface
 
-#Time to start updating the system and installing our software
+#######################################################################################
+#Time to start updating the system
+#######################################################################################
+
 sudo apt-get update && sudo apt-get upgrade --force-yes
-	
+
+#######################################################################################	
+#Loop to determine if it is a virtual machine
+#######################################################################################
+
 while true; do
   read -p "Is this a virtual machine? [y/n]: " yn 
   case $yn in
@@ -133,4 +168,9 @@ while true; do
         * ) echo "Please enter y or n.";;
   esac
 done
+
+#######################################################################################
+#Install the necessary software
+#######################################################################################
+
 sudo apt-get install openssh-client openssh-server landscape-common nmap p7zip-full tiger logwatch libdate-manip-perl fail2ban --force-yes postgresql postgresql-contrib
