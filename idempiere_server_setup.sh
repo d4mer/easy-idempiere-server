@@ -90,12 +90,15 @@ break
 #Determine if the interfaces file exists
 #######################################################################################
 
-file="/home/guest/test/interfaces"
+file="/etc/network/interfaces"
 if [ ! -f $file ]; then
   echo ""
   echo "The file '$file' doesn't exist!"
   echo ""
-  exit 1
+  echo "Let's create it"
+  
+  touch /etc/network/interfaces
+  #exit 1
 fi
 
 #######################################################################################
