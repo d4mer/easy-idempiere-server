@@ -173,4 +173,4 @@ done
 #Install the necessary software
 #######################################################################################
 
-sudo apt-get install openssh-client openssh-server landscape-common nmap p7zip-full tiger logwatch libdate-manip-perl fail2ban --force-yes postgresql postgresql-contrib
+sudo apt-get install openssh-client openssh-server landscape-common nmap p7zip-full tiger logwatch libdate-manip-perl fail2ban --force-yes postgresql postgresql-contrib  
