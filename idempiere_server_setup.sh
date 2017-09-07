@@ -205,7 +205,8 @@ echo "The informaton was saved in '$1' file."
 echo ""
 
     wget -q http://www.webmin.com/jcameron-key.asc -O- | sudo apt-key add -
-    sudo apt-get install webmin --force-yes
+
+    sudo apt-get update && install webmin --force-yes
 break
 }
 
