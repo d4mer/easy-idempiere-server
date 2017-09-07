@@ -81,16 +81,9 @@ break
 #Determine if the interfaces file exists
 #######################################################################################
 
-file="/etc/network/interfaces"
-if [ ! -f $file ]; then
-  echo ""
-  echo "The file '$file' doesn't exist!"
-  echo ""
-  echo "Let's create it"
-  
-  touch /etc/network/interfaces
+writeInterfacesHeader(){
 
-    cat << EOF >> $1
+     cat << EOF >> $1
     # This file describes the network interfaces available on your system
     # and how to activate them. For more information, see interfaces(5).
     # The loopback network interface
@@ -100,6 +93,18 @@ if [ ! -f $file ]; then
     auto eth0
     iface eth0 inet dhcp
     EOF
+}
+
+file="/etc/network/interfaces"
+if [ ! -f $file ]; then
+  echo ""
+  echo "The file '$file' doesn't exist!"
+  echo ""
+  echo "Let's create it"
+
+  touch /etc/network/interfaces
+
+  writeInterfacesHeader
   #exit 1
 fi
 
