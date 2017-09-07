@@ -140,6 +140,7 @@ echo "Inet adapter name is: $iface"
 echo "Address of your Router is:   $routerip"
 echo "The Mask for the Network is: $netmask"
 echo "Your decided Server IP is:   $staticip"
+echo "Your DNS is: $dns"
 echo ""
 
 while true; do
