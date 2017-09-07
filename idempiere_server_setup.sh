@@ -206,7 +206,9 @@ echo ""
 wget -q http://www.webmin.com/jcameron-key.asc -O- | sudo apt-key add -
 
 echo "GPG key installed"
-sudo apt-get update && install webmin
+sudo apt-get update
+echo "Let's install Webmin"
+sudo apt-get install webmin
 break
 }
 
