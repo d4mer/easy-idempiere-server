@@ -96,7 +96,7 @@ EOF
     echo ""
     echo "The informaton was saved in '$3' file."
     echo ""
-  break
+break
 }
 
 file="/etc/network/interfaces"
@@ -224,7 +224,6 @@ while true; do
         * ) echo "Please enter y or n.";;
   esac
 done
-
 #######################################################################################
 #Install the necessary software
 #######################################################################################
