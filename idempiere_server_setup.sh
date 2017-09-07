@@ -192,7 +192,6 @@ done
 #######################################################################################
 
 installWebmin() {
-fileSource="/etc/apt/sources.list"
 cat << EOF >> $2
 # Webmin sources
 deb http://download.webmin.com/download/repository sarge contrib
@@ -208,6 +207,7 @@ echo ""
 break
 }
 
+fileSource="/etc/apt/sources.list"
 while true; do
   read -p "Would you like to install Webmin? [y/n]: " yn
   case $yn in
