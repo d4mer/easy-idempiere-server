@@ -209,8 +209,7 @@ echo ""
 installWebmin()
 {
 echo "Installing Webmin"
-wget -q http://www.webmin.com/jcameron-key.asc -O- | sudo apt-key add -
-sudo apt-get update && install webmin
+
 break
 }
 
@@ -222,7 +221,8 @@ sudo apt-get install openssh-client openssh-server landscape-common nmap p7zip-f
 while true; do
   read -p "Would you like to install Webmin? [y/n]: " yn
   case $yn in
-    [Yy]* ) updateSource $fileSource installWebmin;;
+    [Yy]* ) updateSource $fileSource wget -q http://www.webmin.com/jcameron-key.asc -O- | sudo apt-key add -
+sudo apt-get update && install webmin;;
     [Nn]* ) break;;
         * ) echo "Please enter y or n.";;
   esac
