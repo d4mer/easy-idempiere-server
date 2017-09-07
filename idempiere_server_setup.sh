@@ -68,6 +68,7 @@ iface $iface inet static
 address $staticip
 netmask $netmask
 gateway $routerip 
+dns-nameserver $dns
 EOF
 #don't use any space before of after 'EOF' in the previous line
 
@@ -134,7 +135,7 @@ echo "Here are the available ethernet adapters on your system. You'll need to ch
 echo ""
 echo "$(getifaceinfo)"
 echo ""
-echo "$(getvminfo)"
+#echo "$(getvminfo)"
 echo ""
 
 #######################################################################################
