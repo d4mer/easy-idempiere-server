@@ -176,11 +176,6 @@ while true; do
   esac
 done
 
-#######################################################################################
-#Install the necessary software
-#######################################################################################
-
-sudo apt-get install openssh-client openssh-server landscape-common nmap p7zip-full libdate-manip-perl --force-yes postgresql postgresql-contrib
 
 #######################################################################################
 # Install Webmin
@@ -220,3 +215,9 @@ while true; do
         * ) echo "Please enter y or n.";;
   esac
 done
+
+#######################################################################################
+#Install the necessary software
+#######################################################################################
+
+sudo apt-get install openssh-client openssh-server landscape-common nmap p7zip-full libdate-manip-perl --force-yes postgresql postgresql-contrib
