@@ -195,6 +195,8 @@ installWebmin() {
 
 file="/etc/apt/sources.list"
 cat << EOF >> $1
+
+# Webmin sources
 deb http://download.webmin.com/download/repository sarge contrib
 deb http://webmin.mirror.somersettechsolutions.co.uk/repository sarge contrib
 EOF
