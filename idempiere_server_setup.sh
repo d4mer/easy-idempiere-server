@@ -109,6 +109,8 @@ if [ ! -f $file ]; then
 
   touch /etc/network/interfaces
 
+  echo "File created"
+
   writeInterfacesHeader
   #exit 1
 fi
