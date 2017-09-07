@@ -206,7 +206,7 @@ done
 #Install the necessary software
 #######################################################################################
 
-sudo apt-get install openssh-client openssh-server landscape-common nmap p7zip-full tiger logwatch libdate-manip-perl fail2ban --force-yes postgresql postgresql-contrib
+sudo apt-get install openssh-client openssh-server landscape-common nmap p7zip-full libdate-manip-perl --force-yes postgresql postgresql-contrib
 
 while true; do
   read -p "Would you like to install Webmin? [y/n]: " yn
@@ -216,3 +216,13 @@ while true; do
         * ) echo "Please enter y or n.";;
   esac
 done
+
+while true; do
+  read -p "Would you like to install security measures? [y/n]: " yn
+  case $yn in
+    [Yy]* ) sudo apt install tiger logwatch fail2ban --force-y;;
+    [Nn]* ) break;;
+        * ) echo "Please enter y or n.";;
+  esac
+done
+
