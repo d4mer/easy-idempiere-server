@@ -57,6 +57,30 @@ sudo /media/cdrom/VBoxLinuxAdditions.run
 }
 
 #######################################################################################
+# Install Webmin
+#######################################################################################
+
+installWebmin {
+    read -p "Would you like to install WebMin? " yn
+
+
+    file2 = "/etc/apt/sources.list"
+    cat << EOF >> $2
+    deb http://download.webmin.com/download/repository sarge contrib
+    deb http://webmin.mirror.somersettechsolutions.co.uk/repository sarge contrib
+    EOF
+    #don't use any space before of after 'EOF' in the previous line
+
+      echo ""
+      echo "The informaton was saved in '$2' file."
+      echo ""
+    break
+
+    wget -q http://www.webmin.com/jcameron-key.asc -O- | sudo apt-key add -
+    sudo apt-get install webmin --force-yes
+}
+
+#######################################################################################
 # Write the interfaces file
 #######################################################################################
 
@@ -133,6 +157,7 @@ echo ""
 #######################################################################################
 #Make sure the settings are correct
 #######################################################################################
+
 getinfo
 echo ""
 echo "So your settings are:"
@@ -182,3 +207,12 @@ done
 #######################################################################################
 
 sudo apt-get install openssh-client openssh-server landscape-common nmap p7zip-full tiger logwatch libdate-manip-perl fail2ban --force-yes postgresql postgresql-contrib
+
+while true; do
+  read -p "Would you like to install Webmin? [y/n]: " yn
+  case $yn in
+    [Yy]* ) installWebmin;;
+    [Nn]* ) break;;
+        * ) echo "Please enter y or n.";;
+  esac
+done
