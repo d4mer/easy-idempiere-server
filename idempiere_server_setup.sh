@@ -192,22 +192,22 @@ done
 #######################################################################################
 
 installWebmin() {
-cat << EOF >> $1
-
+file="/etc/apt/sources.list"
+cat << EOF >> $2
 # Webmin sources
 deb http://download.webmin.com/download/repository sarge contrib
 deb http://webmin.mirror.somersettechsolutions.co.uk/repository sarge contrib
 EOF
 #don't use any space before of after 'EOF' in the previous line
 echo ""
-echo "The informaton was saved in '$1' file."
+echo "The informaton was saved in '$2' file."
 echo ""
 
     wget -q http://www.webmin.com/jcameron-key.asc -O- | sudo apt-key add -
     sudo apt-get install webmin --force-yes
 break
 }
-file="/etc/apt/sources.list"
+
 while true; do
   read -p "Would you like to install Webmin? [y/n]: " yn
   case $yn in
