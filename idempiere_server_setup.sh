@@ -238,7 +238,7 @@ done
 while true; do
   read -p "Would you like to install security measures? [y/n]: " yn
   case $yn in
-    [Yy]* ) sudo apt install tiger logwatch fail2ban --force-y;;
+    [Yy]* ) sudo apt install tiger logwatch fail2ban -y;;
     [Nn]* ) break;;
         * ) echo "Please enter y or n.";;
   esac
