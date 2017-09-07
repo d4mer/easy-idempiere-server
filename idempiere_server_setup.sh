@@ -192,7 +192,8 @@ done
 #######################################################################################
 
 fileSource="/etc/apt/sources.list"
-installWebmin() {
+installWebmin()
+{
 cat << EOF >> $2
 # Webmin sources
 deb http://download.webmin.com/download/repository sarge contrib
