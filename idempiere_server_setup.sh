@@ -63,14 +63,7 @@ sudo /media/cdrom/VBoxLinuxAdditions.run
 writeinterfacefile()
 { 
 cat << EOF >> $1 
-# This file describes the network interfaces available on your system
-# and how to activate them. For more information, see interfaces(5).
-# The loopback network interface
-auto lo
-iface lo inet loopback
-# The primary network interface
-auto eth0
-iface eth0 inet dhcp
+
 
 # Your static network configuration  
 iface $iface inet static
@@ -98,6 +91,17 @@ if [ ! -f $file ]; then
   echo "Let's create it"
   
   touch /etc/network/interfaces
+
+    cat << EOF >> $1
+    # This file describes the network interfaces available on your system
+    # and how to activate them. For more information, see interfaces(5).
+    # The loopback network interface
+    auto lo
+    iface lo inet loopback
+    # The primary network interface
+    auto eth0
+    iface eth0 inet dhcp
+    EOF
   #exit 1
 fi
 
@@ -176,4 +180,4 @@ done
 #Install the necessary software
 #######################################################################################
 
-sudo apt-get install openssh-client openssh-server landscape-common nmap p7zip-full tiger logwatch libdate-manip-perl fail2ban --force-yes postgresql postgresql-contrib  
+sudo apt-get install openssh-client openssh-server landscape-common nmap p7zip-full tiger logwatch libdate-manip-perl fail2ban --force-yes postgresql postgresql-contrib
