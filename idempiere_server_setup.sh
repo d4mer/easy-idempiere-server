@@ -207,7 +207,6 @@ echo ""
     sudo apt-get install webmin --force-yes
 break
 }
-
 while true; do
   read -p "Would you like to install Webmin? [y/n]: " yn
   case $yn in
