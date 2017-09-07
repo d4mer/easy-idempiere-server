@@ -204,9 +204,9 @@ echo ""
 echo "The informaton was saved in '$1' file."
 echo ""
 
-    wget -q http://www.webmin.com/jcameron-key.asc -O- | sudo apt-key add -
+    #wget -q http://www.webmin.com/jcameron-key.asc -O- | sudo apt-key add -
 
-    sudo apt-get update && install webmin --force-yes
+    #sudo apt-get update && install webmin --force-yes
 break
 }
 
@@ -215,7 +215,7 @@ while true; do
   read -p "Would you like to install Webmin? [y/n]: " yn
   case $yn in
     [Yy]* ) installWebmin $fileSource wget -q http://www.webmin.com/jcameron-key.asc -O- | sudo apt-key add -
-    sudo apt-get install webmin --force-yes;;
+    sudo apt-get install webmin --force-yes && sudo apt upgrade;;
     [Nn]* ) break;;
         * ) echo "Please enter y or n.";;
   esac
