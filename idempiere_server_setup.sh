@@ -192,7 +192,7 @@ done
 #######################################################################################
 
 fileSource="/etc/apt/sources.list"
-installWebmin()
+updateSource()
 {
 cat << EOF >> $1
 # Webmin sources
@@ -203,12 +203,16 @@ EOF
 echo ""
 echo "The informaton was saved in '$1' file."
 echo ""
-wget -q http://www.webmin.com/jcameron-key.asc -O- | sudo apt-key add -
-sudo apt-get update && install webmin
-break
 
 }
 
+installWebmin()
+{
+echo "Installing Webmin"
+wget -q http://www.webmin.com/jcameron-key.asc -O- | sudo apt-key add -
+sudo apt-get update && install webmin
+break
+}
 
 #######################################################################################
 #Install the necessary software
@@ -218,7 +222,7 @@ sudo apt-get install openssh-client openssh-server landscape-common nmap p7zip-f
 while true; do
   read -p "Would you like to install Webmin? [y/n]: " yn
   case $yn in
-    [Yy]* ) installWebmin $fileSource ;;
+    [Yy]* ) updateSource $fileSource installWebmin;;
     [Nn]* ) break;;
         * ) echo "Please enter y or n.";;
   esac
