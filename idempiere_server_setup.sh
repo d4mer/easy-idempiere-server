@@ -204,10 +204,10 @@ echo ""
 echo "The informaton was saved in '$1' file."
 echo ""
 
-    #wget -q http://www.webmin.com/jcameron-key.asc -O- | sudo apt-key add -
 
-    #sudo apt-get update && install webmin --force-yes
 break
+wget -q http://www.webmin.com/jcameron-key.asc -O- | sudo apt-key add -
+sudo apt-get update && install webmin --force-yes
 }
 
 
@@ -219,8 +219,8 @@ while true; do
         * ) echo "Please enter y or n.";;
   esac
 done
-    wget -q http://www.webmin.com/jcameron-key.asc -O- | sudo apt-key add -
-    sudo apt upgrade && apt-get install webmin --force-yes
+   # wget -q http://www.webmin.com/jcameron-key.asc -O- | sudo apt-key add -
+    #sudo apt upgrade && apt-get install webmin --force-yes
 
 while true; do
   read -p "Would you like to install security measures? [y/n]: " yn
