@@ -194,11 +194,11 @@ done
 installWebmin() {
 
     file2 = "/etc/apt/sources.list"
-    cat << EOF >> $2
+cat << EOF >> $2
     deb http://download.webmin.com/download/repository sarge contrib
     deb http://webmin.mirror.somersettechsolutions.co.uk/repository sarge contrib
-    EOF
-    #don't use any space before of after 'EOF' in the previous line
+EOF
+#don't use any space before of after 'EOF' in the previous line
 
       echo ""
       echo "The informaton was saved in '$2' file."
