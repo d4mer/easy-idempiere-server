@@ -171,7 +171,7 @@ ifdown $iface && ifup $iface
 #Time to start updating the system
 #######################################################################################
 
-sudo apt-get update && sudo apt-get upgrade --force-yes
+sudo apt-get update && sudo apt-get upgrade --yes
 
 #######################################################################################	
 #Loop to determine if it is a virtual machine
@@ -208,7 +208,7 @@ wget -q http://www.webmin.com/jcameron-key.asc -O- | sudo apt-key add -
 echo "GPG key installed"
 sudo apt-get update
 echo "Let's install Webmin"
-sudo apt-get install webmin
+sudo apt-get install webmin --yes
 break
 }
 
