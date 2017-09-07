@@ -186,9 +186,7 @@ sudo apt-get install openssh-client openssh-server landscape-common nmap p7zip-f
 # Install Webmin
 #######################################################################################
 
-installWebmin {
-    read -p "Would you like to install WebMin? " yn
-
+installWebmin() {
 
     file2 = "/etc/apt/sources.list"
     cat << EOF >> $2
