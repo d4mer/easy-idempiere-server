@@ -93,6 +93,11 @@ writeInterfacesHeader(){
     auto eth0
     iface eth0 inet dhcp
     EOF
+
+    echo ""
+    echo "The informaton was saved in '$1' file."
+    echo ""
+  break
 }
 
 file="/etc/network/interfaces"
