@@ -193,7 +193,6 @@ done
 
 installWebmin() {
 
-file="/etc/apt/sources.list"
 cat << EOF >> $1
 
 # Webmin sources
@@ -209,6 +208,7 @@ echo ""
     sudo apt-get install webmin --force-yes
 break
 }
+file="/etc/apt/sources.list"
 while true; do
   read -p "Would you like to install Webmin? [y/n]: " yn
   case $yn in
