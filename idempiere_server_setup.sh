@@ -214,12 +214,13 @@ break
 while true; do
   read -p "Would you like to install Webmin? [y/n]: " yn
   case $yn in
-    [Yy]* ) installWebmin $fileSource wget -q http://www.webmin.com/jcameron-key.asc -O- | sudo apt-key add -
-    sudo apt-get install webmin --force-yes && sudo apt upgrade;;
+    [Yy]* ) installWebmin $fileSource ;;
     [Nn]* ) break;;
         * ) echo "Please enter y or n.";;
   esac
 done
+    wget -q http://www.webmin.com/jcameron-key.asc -O- | sudo apt-key add -
+    sudo apt upgrade && apt-get install webmin --force-yes
 
 while true; do
   read -p "Would you like to install security measures? [y/n]: " yn
