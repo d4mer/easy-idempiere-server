@@ -38,17 +38,18 @@ cat << EOF >> $1
 # This file describes the network interfaces available on your system
 # and how to activate them. For more information, see interfaces(5).
 # The loopback network interface
-auto lo
-iface lo inet loopback
+#auto lo
+#iface lo inet loopback
 # The primary network interface
-auto eth0
-iface eth0 inet dhcp
+#auto $iface
+#iface $iface inet dhcp
 
 # Your static network configuration  
 iface $iface inet static
 address $staticip
 netmask $netmask
 gateway $routerip 
+dns-nameserver $dns
 EOF
 #don't use any space before of after 'EOF' in the previous line
 
@@ -88,7 +89,8 @@ echo "So your settings are:"
 echo "Inet adapter name is: $iface"
 echo "Address of your Router is:   $routerip"
 echo "The Mask for the Network is: $netmask"
-echo "Your decided Server IP is:   $staticip"
+echo "Your decided Server IP is:   $staticip
+echo "You DNS is: $dns
 echo ""
 
 while true; do
