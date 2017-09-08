@@ -205,15 +205,13 @@ EOF
 echo ""
 echo "The informaton was saved in '$1' file."
 echo ""
+wget -q http://www.webmin.com/jcameron-key.asc -O- | sudo apt-key add -
 
-<<<<<<< HEAD
 echo "GPG key installed"
 sudo apt-get update
 echo "Let's install Webmin"
 sudo apt-get install webmin --yes
 break
-=======
->>>>>>> parent of f08ad17... update updateSource
 }
 
 installWebmin()
