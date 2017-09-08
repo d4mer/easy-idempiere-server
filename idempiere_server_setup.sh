@@ -84,7 +84,7 @@ break
 
 writeInterfacesHeader(){
 
-cat << EOF >> $1
+cat << EOF >> $1 
     # This file describes the network interfaces available on your system
     # and how to activate them. For more information, see interfaces(5).
     # The loopback network interface
@@ -93,7 +93,7 @@ cat << EOF >> $1
     # The primary network interface
     auto $iface
     iface $iface inet dhcp
-    EOF
+EOF
 echo ""
 echo "The informaton was saved in '$1' file."
 echo ""
