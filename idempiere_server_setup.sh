@@ -49,7 +49,7 @@ iface $iface inet static
 address $staticip
 netmask $netmask
 gateway $routerip 
-dns-nameserver $dns
+dns-nameservers $dns
 EOF
 #don't use any space before of after 'EOF' in the previous line
 
