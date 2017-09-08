@@ -84,7 +84,7 @@ break
 
 writeInterfacesHeader(){
 
-cat << EOF >> $3
+cat << EOF >> $1
     # This file describes the network interfaces available on your system
     # and how to activate them. For more information, see interfaces(5).
     # The loopback network interface
@@ -93,10 +93,10 @@ cat << EOF >> $3
     # The primary network interface
     auto $iface
     iface $iface inet dhcp
-EOF
-    echo ""
-    echo "The informaton was saved in '$3' file."
-    echo ""
+    EOF
+echo ""
+echo "The informaton was saved in '$1' file."
+echo ""
 break
 }
 
@@ -108,6 +108,8 @@ if [ ! -f $file ]; then
   echo "Let's create it"
 
   touch /etc/network/interfaces
+
+  echo "File created"
 
   writeInterfacesHeader
   #exit 1
