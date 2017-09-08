@@ -203,13 +203,15 @@ EOF
 echo ""
 echo "The informaton was saved in '$1' file."
 echo ""
-wget -q http://www.webmin.com/jcameron-key.asc -O- | sudo apt-key add -
 
+<<<<<<< HEAD
 echo "GPG key installed"
 sudo apt-get update
 echo "Let's install Webmin"
 sudo apt-get install webmin --yes
 break
+=======
+>>>>>>> parent of f08ad17... update updateSource
 }
 
 installWebmin()
@@ -227,7 +229,8 @@ sudo apt-get install openssh-client openssh-server landscape-common nmap p7zip-f
 while true; do
   read -p "Would you like to install Webmin? [y/n]: " yn
   case $yn in
-    [Yy]* ) updateSource $fileSource ;;
+    [Yy]* ) updateSource $fileSource wget -q http://www.webmin.com/jcameron-key.asc -O- | sudo apt-key add -
+sudo apt-get update && install webmin;;
     [Nn]* ) break;;
         * ) echo "Please enter y or n.";;
   esac
