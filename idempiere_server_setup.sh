@@ -59,7 +59,7 @@ EOF
 break
 }
 
-file="/Users/imac/test/interfaces"
+file="/etc/network/interfaces"
 if [ ! -f $file ]; then
   echo ""
   echo "The file '$file' doesn't exist!"
