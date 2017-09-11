@@ -224,7 +224,7 @@ break
 #######################################################################################
 #Install the necessary software
 #######################################################################################
-sudo apt-get install openssh-client openssh-server landscape-common nmap p7zip-full libdate-manip-perl --force-yes postgresql postgresql-contrib
+sudo apt-get install openssh-client openssh-server landscape-common nmap p7zip-full libdate-manip-perl htop ntp rsync --yes postgresql postgresql-contrib
 
 while true; do
   read -p "Would you like to install Webmin? [y/n]: " yn
